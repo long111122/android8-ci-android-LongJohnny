@@ -11,7 +11,9 @@
         android:background="#000000"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -81,6 +83,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:tag="sound_1"
                         android:id="@+id/imageButton6" />
 
                     <ImageView
@@ -89,6 +92,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:tag="sound_2"
                         android:id="@+id/imageButton7" />
 
                     <ImageView
@@ -97,6 +101,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:tag="sound_3"
                         android:id="@+id/imageButton8" />
 
                     <ImageView
@@ -105,6 +110,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:tag="sound_4"
                         android:id="@+id/imageButton9" />
 
                     <ImageView
@@ -113,6 +119,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:tag="sound_5"
                         android:id="@+id/imageButton10" />
 
 
@@ -130,6 +137,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:tag="sound_6"
                         android:id="@+id/imageButton11" />
 
                     <ImageView
@@ -138,6 +146,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:tag="sound_7"
                         android:id="@+id/imageButton12" />
 
                     <ImageView
@@ -146,6 +155,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:tag="sound_8"
                         android:id="@+id/imageButton13" />
 
                     <ImageView
@@ -154,6 +164,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:tag="sound_9"
                         android:id="@+id/imageButton14" />
 
                     <ImageView
@@ -162,6 +173,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:tag="sound_10"
                         android:id="@+id/imageButton15" />
 
                 </LinearLayout>
@@ -169,14 +181,31 @@
             </LinearLayout>
         </LinearLayout>
 
-        <View
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:id="@+id/view" />
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="Record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="77dp"
+                android:id="@+id/record"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="43dp"
+                android:id="@+id/txtView"
+                android:editable="false" />
+        </RelativeLayout>
     </LinearLayout>
-
-
 
 
 </RelativeLayout>

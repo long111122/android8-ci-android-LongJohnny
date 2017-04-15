@@ -1,18 +1,24 @@
 package techkids.vn.fkinginstrument;
 
-import android.media.Image;
 import android.media.MediaPlayer;
-import android.support.v4.view.MotionEventCompat;
+import android.media.MediaRecorder;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import techkids.vn.fkinginstrument.sound.SoundManager;
+import techkids.vn.fkinginstrument.touches.Touch;
+import techkids.vn.fkinginstrument.touches.TouchManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,12 +29,17 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imgView3;
     private ImageView imgView4;
     private ImageView imgView5;
+//    private Button btnRecord;
+//    private String FILE;
+//    private MediaRecorder record;
+//    private TextView txtView;
     private List<PressKeyInfo> pressKeyInfoList;
     private List<PressKeyInfo> ivViewListEven;
     private List<PressKeyInfo> ivViewListOdd;
     private MediaPlayer song1;
     private MediaPlayer song2;
     private MediaPlayer song3;
+//    private MediaPlayer play;
 
     class PressKeyInfo {
         private ImageView ivView;
@@ -65,21 +76,25 @@ public class MainActivity extends AppCompatActivity {
         imgView4 = (ImageView) findViewById(R.id.imageButton4);
         imgView5 = (ImageView) findViewById(R.id.imageButton5);
 
+//        btnRecord = (Button) findViewById(R.id.record);
+//        FILE = Environment.getExternalStorageDirectory() + "/tempRecord.3gpp";
+//        txtView = (TextView) findViewById(R.id.txtView);
+
         ivViewListEven = new ArrayList<>();
         ivViewListOdd = new ArrayList<>();
-        ivViewListEven.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton6), MediaPlayer.create(MainActivity.this, R.raw.fa)));
-        ivViewListOdd.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton7), MediaPlayer.create(MainActivity.this, R.raw.sol)));
-        ivViewListEven.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton8), MediaPlayer.create(MainActivity.this, R.raw.animalsolt)));
-        ivViewListOdd.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton9), MediaPlayer.create(MainActivity.this, R.raw.animallat)));
-        ivViewListEven.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton10), MediaPlayer.create(MainActivity.this, R.raw.doo)));
-        ivViewListOdd.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton11), MediaPlayer.create(MainActivity.this, R.raw.mit)));
-        ivViewListEven.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton12), MediaPlayer.create(MainActivity.this, R.raw.animalsolt)));
-        ivViewListOdd.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton13), MediaPlayer.create(MainActivity.this, R.raw.animalsolt)));
-        ivViewListEven.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton14), MediaPlayer.create(MainActivity.this, R.raw.animalsolt)));
-        ivViewListOdd.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton15), MediaPlayer.create(MainActivity.this, R.raw.animalsolt)));
+        ivViewListEven.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton6), MediaPlayer.create(MainActivity.this, R.raw.sound_1)));
+        ivViewListOdd.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton7), MediaPlayer.create(MainActivity.this, R.raw.sound_2)));
+        ivViewListEven.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton8), MediaPlayer.create(MainActivity.this, R.raw.sound_4)));
+        ivViewListOdd.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton9), MediaPlayer.create(MainActivity.this, R.raw.sound_5)));
+        ivViewListEven.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton10), MediaPlayer.create(MainActivity.this, R.raw.sound_6)));
+        ivViewListOdd.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton11), MediaPlayer.create(MainActivity.this, R.raw.sound_6)));
+        ivViewListEven.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton12), MediaPlayer.create(MainActivity.this, R.raw.sound_7)));
+        ivViewListOdd.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton13), MediaPlayer.create(MainActivity.this, R.raw.sound_8)));
+        ivViewListEven.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton14), MediaPlayer.create(MainActivity.this, R.raw.sound_9)));
+        ivViewListOdd.add(new PressKeyInfo((ImageView) findViewById(R.id.imageButton15), MediaPlayer.create(MainActivity.this, R.raw.sound_10)));
 
         pressKeyInfoList = new ArrayList<>();
-
+        SoundManager.loadSoundIntoList(this);
     }
 
     @Override
@@ -136,40 +151,190 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+//        btnRecord.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(btnRecord.getText().toString().equals("Record")){
+//                    try {
+//                        startRecord();
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                    txtView.setText("Recording...");
+//                    btnRecord.setText("End");
+//                } else if(btnRecord.getText().toString().equals("End")){
+//                    stopRecord();
+//                    btnRecord.setText("Play");
+//                } else if(btnRecord.getText().toString().equals("Play")){
+//                    try {
+//                        startPlayback();
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                    btnRecord.setText("Stop");
+//                } else {
+//                    stopPlayback();
+//                    btnRecord.setText("Record");
+//                }
+//            }
+//        });
     }
+    //old onTouch
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        for (int pointerIndex = 0; pointerIndex < event.getPointerCount(); pointerIndex++) {
+//            int pointerId = event.getPointerId(pointerIndex);
+//            float pointerX = event.getX(pointerIndex);
+//            float pointerY = event.getY(pointerIndex);
+//            int pointerAction = event.getActionMasked();
+//            if (pointerAction == MotionEvent.ACTION_MOVE) {
+//                for (int i = 0; i < pressKeyInfoList.size(); i++) {
+//                    PressKeyInfo pressKeyInfo = pressKeyInfoList.get(i);
+//                    if (pressKeyInfo.getPressKeyId() == pointerId && !isInside(pointerX, pointerY, pressKeyInfo.getIvView())) {
+//                        pressKeyInfoList.remove(i);
+//                        setPress(pressKeyInfo, false);
+//                    }
+//                }
+////                for (PressKeyInfo pressKeyInfo : pressKeyInfoList){
+////                    if(!containsKeyInfoWith(pressKeyInfo.getIvView())){
+////                        new PressKeyInfo(pointerId, pressKeyInfo.getIvView());
+////                        setPress(pressKeyInfo, true);
+////                    }
+////                }
+//            }
+//
+//            PressKeyInfo pressKey = findPressKey(pointerX, pointerY);
+//            if (pressKey != null) {
+//                if (pointerAction == MotionEvent.ACTION_DOWN || pointerAction == MotionEvent.ACTION_POINTER_DOWN || pointerAction == MotionEvent.ACTION_MOVE) {
+//                    if (!containsKeyInfoWith(pressKey.getIvView())) {
+//                        pressKeyInfoList.add(new PressKeyInfo(pointerId, pressKey.getIvView()));
+//                    }
+//                    setPress(pressKey, true);
+//                }
+//                if (pointerAction == MotionEvent.ACTION_UP || pointerAction == MotionEvent.ACTION_POINTER_UP) {
+//                    for (int i = 0; i < pressKeyInfoList.size(); i++) {
+//                        PressKeyInfo pressKeyInfo = pressKeyInfoList.get(i);
+//                        if (pressKeyInfo.getPressKeyId() == pointerId) {
+//                            pressKeyInfoList.remove(i);
+//                        }
+//                        setPress(pressKeyInfo, false);
+//                    }
+//                }
+//            }
+//        }
+//        return super.onTouchEvent(event);
+//    }
+
+    //New Touch
+//
+//    private void startRecord() throws Exception {
+//        if(record != null){
+//            record.release();
+//        }
+//        File fileOut = new File(FILE);
+//        if(fileOut.exists()){
+//            fileOut.delete();
+//        }
+//        record = new MediaRecorder();
+//        record.setAudioSource(MediaRecorder.AudioSource.MIC);
+//        record.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+//        record.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+//        record.setAudioEncodingBitRate(16);
+//        record.setAudioSamplingRate(44100);
+//        record.setOutputFile(FILE);
+//        record.prepare();
+//        record.start();
+//    }
+//
+//    private void stopRecord()  {
+//        if(record != null) {
+//            try {
+//                record.stop();
+//
+//            } catch(RuntimeException stopException){
+//
+//            }
+//        }
+//    }
+//
+//    private void startPlayback() throws Exception {
+//        if(play != null){
+//            play.stop();
+//            play.release();
+//        }
+//        play = new MediaPlayer();
+//        play.setDataSource(FILE);
+//        play.prepare();
+//        play.start();
+//        play.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mediaPlayer) {
+//                play.release();
+//            }
+//        });
+//    }
+//
+//    private void stopPlayback(){
+//        if(play != null){
+//            play.stop();
+//        }
+//    }
+//
+//    private void playSong(PressKeyInfo pressKey){
+//        play = pressKey.getSong();
+//        play.start();
+//        play.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mediaPlayer) {
+//                play.release();
+//            }
+//        });
+//    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        for (int pointerIndex = 0; pointerIndex < event.getPointerCount(); pointerIndex++) {
-            int pointerId = event.getPointerId(pointerIndex);
-            float pointerX = event.getX(pointerIndex);
-            float pointerY = event.getY(pointerIndex);
-            int pointerAction = event.getActionMasked();
-            if (pointerAction == MotionEvent.ACTION_MOVE) {
-                for (int i = 0; i < pressKeyInfoList.size(); i++) {
-                    PressKeyInfo pressKeyInfo = pressKeyInfoList.get(i);
-                    if (pressKeyInfo.getPressKeyId() == pointerId && !isInside(pointerX, pointerY, pressKeyInfo.getIvView())) {
-                        pressKeyInfoList.remove(i);
-                        setPress(pressKeyInfo, false);
-                    }
-                }
-            }
-
-            PressKeyInfo pressKey = findPressKey(pointerX, pointerY);
-            if (pressKey != null) {
-                if (pointerAction == MotionEvent.ACTION_DOWN || pointerAction == MotionEvent.ACTION_POINTER_DOWN || pointerAction == MotionEvent.ACTION_MOVE) {
+        List<Touch> touches = TouchManager.toTouches(event);
+        if(touches.size() > 0){
+            Touch firstTouch = touches.get(0);
+            if(firstTouch.getAction() == MotionEvent.ACTION_DOWN || firstTouch.getAction() == MotionEvent.ACTION_POINTER_DOWN){
+                PressKeyInfo pressKey = findPressKey(firstTouch);
+                if(pressKey != null) {
                     if (!containsKeyInfoWith(pressKey.getIvView())) {
-                        pressKeyInfoList.add(new PressKeyInfo(pointerId, pressKey.getIvView()));
+                        pressKeyInfoList.add(new PressKeyInfo(firstTouch.getId() ,pressKey.getIvView()));
+                        SoundManager.PlaySound(pressKey.getIvView().getTag().toString());
+//                        pressKey.getSong().start();
+                        setPress(pressKey, true);
+
                     }
-                    setPress(pressKey, true);
                 }
-                if (pointerAction == MotionEvent.ACTION_UP || pointerAction == MotionEvent.ACTION_POINTER_UP) {
-                    for (int i = 0; i < pressKeyInfoList.size(); i++) {
-                        PressKeyInfo pressKeyInfo = pressKeyInfoList.get(i);
-                        if (pressKeyInfo.getPressKeyId() == pointerId) {
-                            pressKeyInfoList.remove(i);
-                        }
+            } else if(firstTouch.getAction() == MotionEvent.ACTION_UP || firstTouch.getAction() == MotionEvent.ACTION_POINTER_UP){
+                Iterator<PressKeyInfo> infoIterator = pressKeyInfoList.iterator();
+                while(infoIterator.hasNext()){
+                    PressKeyInfo pressKeyInfo = infoIterator.next();
+                    if(firstTouch.getId() == pressKeyInfo.getPressKeyId()){
                         setPress(pressKeyInfo, false);
+                        infoIterator.remove();
+                    }
+                }
+            } else if(firstTouch.getAction() == MotionEvent.ACTION_MOVE){
+                for (Touch touch : touches){
+                    PressKeyInfo pressKey = findPressKey(touch);
+                    if(pressKey != null && !containsKeyInfoWith(pressKey.getIvView())){
+                        pressKeyInfoList.add(new PressKeyInfo(touch.getId(), pressKey.getIvView()));
+                        SoundManager.PlaySound(pressKey.getIvView().getTag().toString());
+                        setPress(pressKey, true);
+                    }
+
+                    Iterator<PressKeyInfo> infoIterator = pressKeyInfoList.iterator();
+                    while(infoIterator.hasNext()){
+                        PressKeyInfo pressKeyInfo = infoIterator.next();
+                        if(pressKeyInfo != null) {
+                            if (touch.getId() == pressKeyInfo.getPressKeyId() && !touch.isInside(pressKeyInfo.getIvView())) {
+                                infoIterator.remove();
+                                setPress(pressKeyInfo, false);
+                            }
+                        }
                     }
                 }
             }
@@ -185,42 +350,32 @@ public class MainActivity extends AppCompatActivity {
             if(ivViewListEven.contains(pressKeyInfo)){
                 pressKeyInfo.getIvView().setImageResource(R.drawable.btn4);
             }
-            if(!pressKeyInfo.getSong().isPlaying()){
-                pressKeyInfo.getSong().start();
-            }
+//            if(!pressKeyInfo.getSong().isPlaying()){
+//                pressKeyInfo.getSong().start();
+//            }
         }
         else{
             pressKeyInfo.getIvView().setImageResource(R.drawable.btn2);
         }
     }
 
-    private boolean containsKeyInfoWith(ImageView imageView){
-        for (PressKeyInfo pressKeyInfo : pressKeyInfoList){
-            if(pressKeyInfo.getIvView() == imageView){
+    private boolean containsKeyInfoWith(ImageView ivKey){
+        for (PressKeyInfo pressKey : pressKeyInfoList){
+            if(pressKey.getIvView() == ivKey){
                 return true;
             }
         }
         return false;
     }
 
-    private boolean isInside(float x, float y, View v){
-        int[] location = new int[2];
-        v.getLocationOnScreen(location);
-        int left = location[0];
-        int right = left + v.getWidth();
-        int top = location[1];
-        int bottom = top + v.getHeight();
-        return (x > left && x < right && y > top && y < bottom);
-    }
-
-    private PressKeyInfo findPressKey(float pointerX, float pointerY){
+    private PressKeyInfo findPressKey(Touch touch){
         for (PressKeyInfo pressKeyInfo : ivViewListEven){
-            if(isInside(pointerX, pointerY, pressKeyInfo.getIvView())){
+            if(touch.isInside(pressKeyInfo.getIvView())){
                 return pressKeyInfo;
             }
         }
         for (PressKeyInfo pressKeyInfo : ivViewListOdd){
-            if(isInside(pointerX, pointerY, pressKeyInfo.getIvView())){
+            if(touch.isInside(pressKeyInfo.getIvView())){
                 return pressKeyInfo;
             }
         }
