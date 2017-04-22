@@ -29,17 +29,17 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imgView3;
     private ImageView imgView4;
     private ImageView imgView5;
-//    private Button btnRecord;
-//    private String FILE;
-//    private MediaRecorder record;
-//    private TextView txtView;
+    private Button btnRecord;
+    private String FILE;
+    private MediaRecorder record;
+    private TextView txtView;
     private List<PressKeyInfo> pressKeyInfoList;
     private List<PressKeyInfo> ivViewListEven;
     private List<PressKeyInfo> ivViewListOdd;
     private MediaPlayer song1;
     private MediaPlayer song2;
     private MediaPlayer song3;
-//    private MediaPlayer play;
+    private MediaPlayer play;
 
     class PressKeyInfo {
         private ImageView ivView;
@@ -76,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
         imgView4 = (ImageView) findViewById(R.id.imageButton4);
         imgView5 = (ImageView) findViewById(R.id.imageButton5);
 
-//        btnRecord = (Button) findViewById(R.id.record);
-//        FILE = Environment.getExternalStorageDirectory() + "/tempRecord.3gpp";
-//        txtView = (TextView) findViewById(R.id.txtView);
+        btnRecord = (Button) findViewById(R.id.record);
+        FILE = Environment.getExternalStorageDirectory() + "/tempRecord.3gp";
+        txtView = (TextView) findViewById(R.id.txtView);
 
         ivViewListEven = new ArrayList<>();
         ivViewListOdd = new ArrayList<>();
@@ -152,33 +152,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        btnRecord.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(btnRecord.getText().toString().equals("Record")){
-//                    try {
-//                        startRecord();
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                    txtView.setText("Recording...");
-//                    btnRecord.setText("End");
-//                } else if(btnRecord.getText().toString().equals("End")){
-//                    stopRecord();
-//                    btnRecord.setText("Play");
-//                } else if(btnRecord.getText().toString().equals("Play")){
-//                    try {
-//                        startPlayback();
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                    btnRecord.setText("Stop");
-//                } else {
-//                    stopPlayback();
-//                    btnRecord.setText("Record");
-//                }
-//            }
-//        });
+        btnRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(btnRecord.getText().toString().equals("Record")){
+                    try {
+                        startRecord();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    txtView.setText("Recording...");
+                    btnRecord.setText("End");
+                } else if(btnRecord.getText().toString().equals("End")){
+                    stopRecord();
+                    btnRecord.setText("Play");
+                } else if(btnRecord.getText().toString().equals("Play")){
+                    try {
+                        startPlayback();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    btnRecord.setText("Stop");
+                } else {
+                    stopPlayback();
+                    btnRecord.setText("Record");
+                }
+            }
+        });
     }
     //old onTouch
 //    @Override
@@ -227,70 +227,70 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     //New Touch
-//
-//    private void startRecord() throws Exception {
-//        if(record != null){
-//            record.release();
-//        }
-//        File fileOut = new File(FILE);
-//        if(fileOut.exists()){
-//            fileOut.delete();
-//        }
-//        record = new MediaRecorder();
-//        record.setAudioSource(MediaRecorder.AudioSource.MIC);
-//        record.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-//        record.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-//        record.setAudioEncodingBitRate(16);
-//        record.setAudioSamplingRate(44100);
-//        record.setOutputFile(FILE);
-//        record.prepare();
-//        record.start();
-//    }
-//
-//    private void stopRecord()  {
-//        if(record != null) {
-//            try {
-//                record.stop();
-//
-//            } catch(RuntimeException stopException){
-//
-//            }
-//        }
-//    }
-//
-//    private void startPlayback() throws Exception {
-//        if(play != null){
-//            play.stop();
-//            play.release();
-//        }
-//        play = new MediaPlayer();
-//        play.setDataSource(FILE);
-//        play.prepare();
-//        play.start();
-//        play.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mediaPlayer) {
-//                play.release();
-//            }
-//        });
-//    }
-//
-//    private void stopPlayback(){
-//        if(play != null){
-//            play.stop();
-//        }
-//    }
-//
-//    private void playSong(PressKeyInfo pressKey){
-//        play = pressKey.getSong();
-//        play.start();
-//        play.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mediaPlayer) {
-//                play.release();
-//            }
-//        });
-//    }
+
+    private void startRecord() throws Exception {
+        if(record != null){
+            record.release();
+        }
+        File fileOut = new File(FILE);
+        if(fileOut.exists()){
+            fileOut.delete();
+        }
+        record = new MediaRecorder();
+        record.setAudioSource(MediaRecorder.AudioSource.MIC);
+        record.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        record.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        record.setAudioEncodingBitRate(16);
+        record.setAudioSamplingRate(44100);
+        record.setOutputFile(FILE);
+        record.prepare();
+        record.start();
+    }
+
+    private void stopRecord()  {
+        if(record != null) {
+            try {
+                record.stop();
+
+            } catch(RuntimeException stopException){
+
+            }
+        }
+    }
+
+    private void startPlayback() throws Exception {
+        if(play != null){
+            play.stop();
+            play.release();
+        }
+        play = new MediaPlayer();
+        play.setDataSource(FILE);
+        play.prepare();
+        play.start();
+        play.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                play.release();
+            }
+        });
+    }
+
+    private void stopPlayback(){
+        if(play != null){
+            play.stop();
+        }
+    }
+
+    private void playSong(PressKeyInfo pressKey){
+        play = pressKey.getSong();
+        play.start();
+        play.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                play.release();
+            }
+        });
+    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -302,7 +302,8 @@ public class MainActivity extends AppCompatActivity {
                 if(pressKey != null) {
                     if (!containsKeyInfoWith(pressKey.getIvView())) {
                         pressKeyInfoList.add(new PressKeyInfo(firstTouch.getId() ,pressKey.getIvView()));
-                        SoundManager.PlaySound(pressKey.getIvView().getTag().toString());
+//                        SoundManager.PlaySound(pressKey.getIvView().getTag().toString());
+                        playSong(pressKey);
 //                        pressKey.getSong().start();
                         setPress(pressKey, true);
 
