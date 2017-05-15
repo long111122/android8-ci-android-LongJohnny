@@ -1,0 +1,36 @@
+#Internal package file, do not edit.
+#Thu May 04 21:14:13 ICT 2017
+2.base=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_
+5.file=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\xml-v12\\widget_provider.xml
+5.set=ANDROID_RESOURCE
+3.base=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_
+6.file=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\widget.xml
+2.set=ANDROID_RESOURCE
+10.set=ANDROID_RESOURCE
+10.file=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\row.xml
+4.base=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_
+7.file=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-mdpi-v4\\cw.png
+7.set=ANDROID_RESOURCE
+count=11
+0.file=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\widget_frame.9.png
+5.base=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_
+8.file=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_\\resources.arsc
+4.set=ANDROID_RESOURCE
+6.base=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_
+1.file=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_\\AndroidManifest.xml
+9.set=DEX
+9.file=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
+10.base=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_
+1.set=ANDROID_RESOURCE
+7.base=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_
+2.file=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\xml\\widget_provider.xml
+6.set=ANDROID_RESOURCE
+0.base=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_
+8.base=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_
+3.file=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-nodpi-v4\\preview.png
+3.set=ANDROID_RESOURCE
+1.base=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_
+9.base=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+4.file=D\:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-hdpi-v4\\icon.png
+8.set=ANDROID_RESOURCE
+0.set=ANDROID_RESOURCE

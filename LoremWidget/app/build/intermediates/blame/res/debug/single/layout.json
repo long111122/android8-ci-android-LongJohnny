@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\merged\\debug\\layout\\row.xml",
+        "source": "D:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\src\\main\\res\\layout\\row.xml"
+    },
+    {
+        "merged": "D:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\build\\intermediates\\res\\merged\\debug\\layout\\widget.xml",
+        "source": "D:\\androidHD\\android8-ci-android-LongJohnny\\LoremWidget\\app\\src\\main\\res\\layout\\widget.xml"
+    }
+]
