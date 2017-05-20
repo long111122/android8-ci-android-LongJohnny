@@ -25,6 +25,10 @@ public class Story implements Serializable {
         this.isFavorite = isFavorite;
     }
 
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
     public int getCurrentChapter() {
         return currentChapter;
     }

@@ -3,6 +3,7 @@ package com.techkid.anh82.truyenratngan.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.techkid.anh82.truyenratngan.StoryApplication;
 import com.techkid.anh82.truyenratngan.databases.StoryDatabase;
@@ -15,7 +16,7 @@ import java.util.List;
  * Created by EDGY on 5/15/2017.
  */
 
-public class ChapterAdapter extends FragmentPagerAdapter{
+public class ChapterAdapter extends FragmentStatePagerAdapter{
 
     private Story story;
     private List<Integer> chapterIds;

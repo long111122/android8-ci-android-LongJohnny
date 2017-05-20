@@ -80,7 +80,6 @@ public class StoryDatabase extends SQLiteAssetHelper {
     }
 
     public Story storyById(int storyId){
-        // get readable database , lay quyen dc doc
         SQLiteDatabase db = getReadableDatabase();
         //query ==> cursor
         Cursor cursor = db.query("tbl_story",STORY_ALL_COLUMNS, null, null, null,null, null);
@@ -142,12 +141,13 @@ public class StoryDatabase extends SQLiteAssetHelper {
 
     public void setCurrentChapter(Story story, int chapterId){
         ContentValues contentValues = new ContentValues();
-        contentValues.put("last_chapter_no",chapterId);
+        contentValues.put(STORY_LAST_CHAPTER,chapterId);
         SQLiteDatabase db = getWritableDatabase();
         db.update("tbl_story",
                 contentValues,
                 "id = ?",
                 new String[]{((Integer)story.getId()).toString()});
+        db.close();
     }
 
     public int getLastChapterNo(Story story){
@@ -159,5 +159,16 @@ public class StoryDatabase extends SQLiteAssetHelper {
         int lastChapter = cursor.getInt(0);
         cursor.close();
         return lastChapter;
+    }
+
+    public void updateFavourite(Story story, int isFavour) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(STORY_IS_FAVORITE, isFavour);
+        db.update("tbl_story",
+                contentValues,
+                "id = ?",
+                new String[]{((Integer)story.getId()).toString()});
+        db.close();
     }
 }
