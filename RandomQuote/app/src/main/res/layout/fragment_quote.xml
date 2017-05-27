@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="image.manual.android.randomquote.activities.fragments.QuoteFragment">
+    tools:context="image.manual.android.randomquote.fragments.QuoteFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
@@ -23,7 +23,7 @@
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-            <!--android:text="Không có việc gì khó chỉ sợ lòng không bền, dời núi và lắp biển, quyết chí ắt làm nên"-->
+        <!--android:text="Không có việc gì khó chỉ sợ lòng không bền, dời núi và lắp biển, quyết chí ắt làm nên"-->
     </RelativeLayout>
 
 </FrameLayout>

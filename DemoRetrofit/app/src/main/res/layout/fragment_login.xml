@@ -1,0 +1,145 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="image.manual.android.demoretrofit.fragments.LoginFragment"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_login"
+
+        >
+        <RelativeLayout
+            android:id="@+id/rl_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/colorGrey"
+            >
+
+            <TextView
+                android:id="@+id/tv_title_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="LOGIN"
+                android:textSize="30sp"
+                android:layout_marginTop="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <EditText
+                android:id="@+id/et_username"
+                android:background="@color/colorGreyDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:layout_below="@+id/tv_title_login"
+                android:textColorHint="@color/colorHint"
+                android:layout_marginTop="20dp"
+                android:textSize="25sp"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/ic_perm_identity_black_24px"
+                android:singleLine="true"
+                android:drawablePadding="10dp"
+                android:hint="Username"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+
+            <EditText
+                android:id="@+id/et_password"
+                android:background="@color/colorGreyDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="25sp"
+                android:paddingLeft="10dp"
+                android:inputType="textPassword"
+                android:textColor="@color/colorWhite"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColorHint="@color/colorHint"
+                android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
+                android:drawablePadding="10dp"
+                android:layout_below="@+id/et_username"
+                android:hint="Password" />
+
+            <Button
+                android:id="@+id/btn_login"
+                android:background="@color/colorButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/et_password"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:text="SIGN IN"
+                android:textColor="@color/colorWhite"
+                android:layout_alignStart="@+id/et_password"
+                android:layout_alignEnd="@+id/et_password"
+                android:layout_alignLeft="@+id/et_password"
+                android:layout_alignRight="@+id/et_password"
+                />
+
+            <CheckBox
+                android:id="@+id/cb_remember"
+                android:buttonTint="@color/colorDev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/btn_login"
+                android:layout_marginLeft="25dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_remember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textSize="20sp"
+                android:text="Remember me"
+                android:layout_alignTop="@+id/cb_remember"
+                android:layout_alignLeft="@+id/cb_remember"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="40dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_remember"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/colorWhite"
+                android:text="@string/no_account"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="25dp"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_quote_fill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorDev"
+            android:text="Android | Techkids | Gen8 | Login | Design | Activity | Fragment | HuyRH | QK | Google | Android | LongJN | Android | Google"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:layout_alignParentBottom="true"
+            android:textSize="14dp"
+            android:layout_alignLeft="@+id/rl_login"
+            android:layout_alignRight="@+id/rl_login"
+            android:layout_marginBottom="35dp"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">DemoRetrofit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_account">Have no account?</string>
+    <string name="have_account">Already a member?</string>
+    <string name="register_word"><![CDATA[<b><font color=#B25D00>Register now!</b>]]></string>
+    <string name="login_word"><![CDATA[<b><font color=#B25D00>Login now!</b>]]></string>
+    <string name="fullname_length_validate">Your name must be from 4 to 24 character</string>
+    <string name="password_validate">"Password must contain at least 1 uppercase, 1 special character and 1 number"</string>
+    <string name="username_validate">"Username must not contain special charaters"</string>
+    <string name="blank_name">Your name must not be blank</string>
+    <string name="fullname_validate">Your name must not contain special characters or numbers</string>
+    <string name="username_length_validate">Your username must be from 8 to 24 character</string>
+    <string name="password_length_validate">Your password must be from 8 to 24 character</string>
+    <string name="phone_length_validate">phone must be from 8 to 12 numbers</string>
+    <string name="phone_validate">phone must only contain numbers</string>
+    <string name="mail_validate">Mail is not valid</string>
+    <string name="mail_length_validate">You must input your mail</string>
+    <string name="invalid_infor">\"You must enter your information in form\"</string>
+
+</resources>
