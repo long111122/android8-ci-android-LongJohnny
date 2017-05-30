@@ -1,0 +1,172 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="image.manual.android.demoretrofit.fragments.RegisterFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/rl_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_login"
+        >
+        <RelativeLayout
+            android:id="@+id/rl_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/colorGrey"
+            >
+            <TextView
+                android:id="@+id/tv_banner"
+                android:text="REGISTER"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textSize="30dp"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="25dp"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/et_fullname"
+                android:background="@color/colorGreyDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_banner"
+                android:textSize="25sp"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/ic_account_circle_black_24dp"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:hint="Full name"
+                android:textColorHint="@color/colorHint"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+
+            <EditText
+                android:id="@+id/et_username"
+                android:background="@color/colorGreyDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_fullname"
+                android:drawableLeft="@drawable/ic_perm_identity_black_24px"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Username"
+                android:textColor="@color/colorWhite"
+                android:textSize="25sp"
+                android:textColorHint="@color/colorHint"
+                android:layout_alignLeft="@id/et_fullname"
+                android:layout_alignRight="@id/et_fullname"
+                />
+
+            <EditText
+                android:id="@+id/et_mail"
+                android:background="@color/colorGreyDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_username"
+                android:drawableLeft="@drawable/ic_mail_outline_black_24dp"
+                android:paddingLeft="10dp"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Your mail"
+                android:textColor="@color/colorWhite"
+                android:textSize="25sp"
+                android:textColorHint="@color/colorHint"
+                android:layout_alignLeft="@id/et_fullname"
+                android:layout_alignRight="@id/et_fullname"
+                />
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:background="@color/colorGreyDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone number"
+                android:textColorHint="@color/colorHint"
+                android:textSize="25sp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/et_mail"
+                android:textColor="@color/colorWhite"
+                android:drawableLeft="@drawable/ic_phone_black_24dp"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:layout_alignLeft="@id/et_fullname"
+                android:layout_alignRight="@id/et_fullname"
+                />
+
+            <EditText
+                android:id="@+id/et_password"
+                android:background="@color/colorGreyDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:textColorHint="@color/colorHint"
+                android:textSize="25sp"
+                android:inputType="textPassword"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/et_phone"
+                android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:layout_alignLeft="@id/et_fullname"
+                android:layout_alignRight="@id/et_fullname"
+                />
+
+            <Button
+                android:id="@+id/btn_register"
+                android:background="@color/colorButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/et_password"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:text="CREATE ACCOUNT"
+                android:textColor="@color/colorWhite"
+                android:layout_alignStart="@+id/et_password"
+                android:layout_alignEnd="@+id/et_password"
+                android:layout_alignLeft="@+id/et_password"
+                android:layout_alignRight="@+id/et_password"
+                />
+
+            <TextView
+                android:id="@+id/tv_have_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_register"
+                android:textSize="20sp"
+                android:text="Already a member?"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/colorWhite"
+                android:gravity="center_horizontal"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_quote_fill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorDev"
+            android:text="Android | Techkids | Gen8 | Login | Design | Activity | Fragment | HuyRH | QK | Google | Android | LongJN | Android | Google"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:layout_alignParentBottom="true"
+            android:textSize="14dp"
+            android:layout_alignLeft="@+id/rl_register"
+            android:layout_alignRight="@+id/rl_register"
+            android:layout_marginBottom="35dp"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+
+</FrameLayout>

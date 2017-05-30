@@ -1,23 +1,39 @@
 package image.manual.android.demoretrofit.networks;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by EDGY on 5/23/2017.
  */
 
 public class LoginResponse {
-    private String message;
-    private int code;
+    @SerializedName("access_token")
+    private String token;
+    private String description;
+    private String error;
+    @SerializedName("status_code")
+    private int status;
 
-    public LoginResponse(String message, int code) {
-        this.message = message;
-        this.code = code;
+    public LoginResponse(String token, String description, String error, int status) {
+        this.token = token;
+        this.description = description;
+        this.error = error;
+        this.status = status;
     }
 
-    public String getMessage() {
-        return message;
+    public String getToken() {
+        return token;
     }
 
-    public int getCode() {
-        return code;
+    public String getDescription() {
+        return description;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public int getStatus() {
+        return status;
     }
 }

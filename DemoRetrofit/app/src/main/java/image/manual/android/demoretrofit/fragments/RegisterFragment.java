@@ -284,7 +284,7 @@ public class RegisterFragment extends Fragment {
 
     private void register() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://a-server.herokuapp.com/")
+                .baseUrl("http://a-task.herokuapp.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RegisterService registerService = retrofit.create(RegisterService.class);

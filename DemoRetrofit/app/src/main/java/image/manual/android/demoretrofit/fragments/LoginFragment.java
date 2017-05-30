@@ -16,8 +16,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import image.manual.android.demoretrofit.R;
 import image.manual.android.demoretrofit.activities.MainActivity;
 import image.manual.android.demoretrofit.networks.LoginRequest;
 import image.manual.android.demoretrofit.networks.LoginResponse;
@@ -160,7 +158,7 @@ public class LoginFragment extends Fragment {
 
     private void login() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://a-server.herokuapp.com/")
+                .baseUrl("http://a-task.herokuapp.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         LoginService registerService = retrofit.create(LoginService.class);
@@ -169,18 +167,18 @@ public class LoginFragment extends Fragment {
                 etPassword.getText().toString())).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+
                 if(response.code() == 200){
                     LoginResponse loginResponse = response.body();
-                    if(loginResponse.getCode() == 1){
-                        Toast.makeText(LoginFragment.this.getActivity(), "Login successful", Toast.LENGTH_LONG).show();
-                        if(cbRemember.isChecked()){
-                            saveAccount(etUsername.getText().toString(), etPassword.getText().toString());
-                        } else {
-                            saveAccount("", "");
-                        }
+                    Toast.makeText(LoginFragment.this.getActivity(), "Login successful", Toast.LENGTH_LONG).show();
+                    if(cbRemember.isChecked()){
+                        saveAccount(etUsername.getText().toString(), etPassword.getText().toString());
                     } else {
-                        Toast.makeText(LoginFragment.this.getActivity(), loginResponse.getMessage().toString(), Toast.LENGTH_LONG).show();
+                            saveAccount("", "");
                     }
+                    ((MainActivity)getActivity()).changeScreen(new GetTasksFragment().setToken(loginResponse.getToken()), true);
+                } else {
+                    Toast.makeText(LoginFragment.this.getActivity(), "Username of password is wrong", Toast.LENGTH_LONG).show();
                 }
             }
 
