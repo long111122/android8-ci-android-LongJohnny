@@ -2,7 +2,9 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#0593d3</color>
     <color name="colorTablayout">#0593d3</color>
-
+    <color name="primary_text">#ffffff</color>
+    <color name="secondary_text">#70ffffff</color>
+    <color name="color_bg_detail_anime">#c812151c</color>
 </resources>

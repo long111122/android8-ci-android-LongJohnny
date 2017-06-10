@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:clickable="true"
+    android:background="@color/colorPrimary"
     tools:context="image.manual.android.freemusic.activities.ScrollingActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -23,9 +24,10 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
-                android:id="@+id/tv_top_song"
+                android:id="@+id/iv_top_song"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 android:background="@color/colorPrimary"
                 />
 
@@ -39,40 +41,6 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:orientation="vertical"
-        android:padding="16dp"
-        >
-
-        <TextView
-            android:id="@+id/tv_music_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ALL"
-            android:textColor="@color/primary_text"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="50 songs"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/secondary_text"
-            />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_top_song"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            >
-
-        </android.support.v7.widget.RecyclerView>
-    </LinearLayout>
-
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -82,5 +50,36 @@
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@android:drawable/ic_media_play" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:id="@+id/tv_top_song"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALL"
+            android:textAllCaps="true"
+            android:textColor="@color/primary_text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="50 songs"
+            android:textColor="@color/secondary_text" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_top_song"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
