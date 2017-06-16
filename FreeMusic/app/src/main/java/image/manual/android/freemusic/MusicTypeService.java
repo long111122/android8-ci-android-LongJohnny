@@ -10,6 +10,6 @@ import retrofit2.http.GET;
  */
 
 public interface MusicTypeService {
-    @GET("data/media-types.json")
-    Call<List<MediaType>> getMusicTypes();
+    @GET("https://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/genres")
+    Call<MediaType> getMusicTypes();
 }

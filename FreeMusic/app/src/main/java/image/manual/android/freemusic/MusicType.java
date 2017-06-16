@@ -8,20 +8,18 @@ import com.google.gson.annotations.SerializedName;
 
 public class MusicType {
     private String id;
-    //unknown variable, example 'class'
-    @SerializedName("translation_key")
-    private String musicKey;
+    private String name;
 
-    public MusicType(String id, String musicKey) {
+    public MusicType(String id, String name) {
         this.id = id;
-        this.musicKey = musicKey;
+        this.name = name;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getTranslation_key() {
-        return musicKey;
+    public String getName() {
+        return name;
     }
 }

@@ -1,5 +1,8 @@
 package image.manual.android.freemusic;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,15 +10,14 @@ import java.util.List;
  */
 
 public class MediaType {
-    private List<MusicType> subgenres;
+    @SerializedName("34")
+    private Subgenres subgenres;
 
-    public MediaType(List<MusicType> subgenres) {
+    public MediaType(Subgenres subgenres) {
         this.subgenres = subgenres;
     }
 
-    public List<MusicType> getSubgenres() {
+    public Subgenres getSubgenres() {
         return subgenres;
     }
-
-
 }

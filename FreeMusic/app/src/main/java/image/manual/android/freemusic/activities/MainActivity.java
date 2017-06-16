@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
@@ -29,16 +31,22 @@ import image.manual.android.freemusic.MusicTypeService;
 import image.manual.android.freemusic.R;
 import image.manual.android.freemusic.adapters.PagerAdapter;
 import image.manual.android.freemusic.databases.models.TopSongModel;
+import image.manual.android.freemusic.events.LoadUIPlayer;
+import image.manual.android.freemusic.events.OnClickMiniPlayer;
 import image.manual.android.freemusic.events.OnClickTopSong;
+import image.manual.android.freemusic.fragments.MainPlayerFragment;
 import image.manual.android.freemusic.managers.MusicManager;
+import image.manual.android.freemusic.managers.ScreenManager;
 import image.manual.android.freemusic.networks.RetrofitFactory;
+import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
+    private TopSongModel topSongModel;
 
     @BindView(R.id.tb_main) Toolbar tbMain;
     @BindView(R.id.tab_layout) TabLayout tabLayout;
@@ -97,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         sbMiniPlayer.setPadding(0,0,0,0);
+        fbPlay.setOnClickListener(this);
+        rlMiniPlayer.setOnClickListener(this);
     }
 
     @Subscribe
@@ -104,5 +114,34 @@ public class MainActivity extends AppCompatActivity {
         TopSongModel topSongModel = onClickTopSong.getTopSongModel();
         MusicManager.loadSearchSong(this, topSongModel);
         rlMiniPlayer.setVisibility(View.VISIBLE);
+    }
+
+    @Subscribe
+    public void onLoadMiniplayerUI(LoadUIPlayer loadUIPlayer){
+        topSongModel = loadUIPlayer.getTopSongModel();
+        tvSong.setText(topSongModel.getSongName());
+        tvSinger.setText(topSongModel.getSingerName());
+        Picasso.with(this).load(topSongModel.getSmallImage()).transform(new CropCircleTransformation()).into(ivPlayer);
+        MusicManager.updateSong(fbPlay, sbMiniPlayer, null, null, null);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.fb_mini_play){
+            MusicManager.playOrPause();
+        } else {
+            //TODO : Open MainPlayer
+            EventBus.getDefault().postSticky(new OnClickMiniPlayer(topSongModel));
+            ScreenManager.openFragment(getSupportFragmentManager(), new MainPlayerFragment(), R.id.rl_main, true, false);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(getSupportFragmentManager().getBackStackEntryCount() != 0){
+            super.onBackPressed();
+        } else {
+            moveTaskToBack(true);
+        }
     }
 }

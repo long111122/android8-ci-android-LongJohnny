@@ -19,10 +19,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import image.manual.android.freemusic.ListMusicType;
 import image.manual.android.freemusic.MediaType;
 import image.manual.android.freemusic.MusicType;
 import image.manual.android.freemusic.MusicTypeService;
 import image.manual.android.freemusic.R;
+import image.manual.android.freemusic.Subgenres;
 import image.manual.android.freemusic.adapters.MusicTypeAdapter;
 import image.manual.android.freemusic.databases.models.MusicTypeModel;
 import image.manual.android.freemusic.events.OnCLickMusicTypeModel;
@@ -57,16 +59,20 @@ public class MusicTypeFragment extends Fragment implements View.OnClickListener 
     private void loadData() {
         RetrofitFactory
                 .getInstance()
-                .createService(MusicTypeService.class).getMusicTypes().enqueue(new Callback<List<MediaType>>() {
+                .createService(MusicTypeService.class)
+                .getMusicTypes().enqueue(new Callback<MediaType>() {
             @Override
-            public void onResponse(Call<List<MediaType>> call, Response<List<MediaType>> response) {
-                if(response.code() == 200) {
-                    MediaType mediaType = response.body().get(3);
-                    List<MusicType> musicTypes = mediaType.getSubgenres();
-                    for (MusicType musicType : musicTypes){
+            public void onResponse(Call<MediaType> call, Response<MediaType> response) {
+                if (response.code() == 200) {
+                    MediaType mediaType = response.body();
+                    Subgenres subgenres = mediaType.getSubgenres();
+                    ListMusicType listMusicType = subgenres.getListMusicType();
+                    List<MusicType> musicTypes = listMusicType.getMusicTypeList();
+                    for (MusicType musicType : musicTypes) {
+                        Log.d(TAG, musicType.getId() + " FK this " + musicType.getName());
                         MusicTypeModel musicTypeModel = new MusicTypeModel(
                                 musicType.getId(),
-                                musicType.getTranslation_key(),
+                                musicType.getName(),
                                 getResources().getIdentifier(
                                         "genre_x2_" + musicType.getId(),
                                         "raw",
@@ -79,10 +85,11 @@ public class MusicTypeFragment extends Fragment implements View.OnClickListener 
             }
 
             @Override
-            public void onFailure(Call<List<MediaType>> call, Throwable t) {
-                Log.d(TAG, "fail connecction");
+            public void onFailure(Call<MediaType> call, Throwable t) {
+
             }
         });
+
     }
 
     private void setupUI(View view) {
@@ -110,6 +117,6 @@ public class MusicTypeFragment extends Fragment implements View.OnClickListener 
         MusicTypeModel musicTypeModel = (MusicTypeModel) v.getTag();
         Log.d(TAG,musicTypeModel.getKey() + "");
         EventBus.getDefault().postSticky(new OnCLickMusicTypeModel(musicTypeModel));
-        ScreenManager.openFragment(getActivity().getSupportFragmentManager(), new TopSongFragment(), R.id.rl_container , true);
+        ScreenManager.openFragment(getActivity().getSupportFragmentManager(), new TopSongFragment(), R.id.rl_container, true, true);
     }
 }
